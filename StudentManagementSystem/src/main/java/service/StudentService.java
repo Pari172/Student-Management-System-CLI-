@@ -49,17 +49,62 @@ public class StudentService {
         }
     }
 
-    public void SearchStudent() {
-        System.out.println("Enter Studnet Id to search: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+    // serch by id
+    public void SearchById(int id) {
         for (Student student : students) {
             if (student.getId() == id) {
                 System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
-                return;
             }
         }
-        System.out.println(ANSI_RED + "Invalid Studnet Id !" + ANSI_RESET);
+    }
+
+    // serach by name
+    public void SearchByName(String name) {
+        for (Student student : students) {
+            if (student.getName().equalsIgnoreCase(name)) {
+                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
+            }
+        }
+    }
+
+    // search by age
+    public void SearchByAge(int age) {
+        for (Student student : students) {
+            if (student.getAge() == age) {
+                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
+            }
+        }
+    }
+
+    public void SearchStudent() {
+        System.out.println("Press 1 to search by Id: ");
+        System.out.println("Press 2 to search by name: ");
+        System.out.println("Press 3 to search by age: ");
+        System.out.println("Enter your choice: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+        switch (choice) {
+            case 1:
+                System.out.println("Enter id: ");
+                int Id = sc.nextInt();
+                sc.nextLine();
+                SearchById(Id);
+                break;
+            case 2:
+                System.out.println("Enter Name: ");
+                String name = sc.nextLine();
+                SearchByName(name);
+                break;
+            case 3:
+                System.out.println("Enter Age: ");
+                int age = sc.nextInt();
+                sc.nextLine();
+                SearchByAge(age);
+                break;
+            default:
+                System.out.println(ANSI_RED + "Invalid Input !" + ANSI_RESET);
+                break;
+        }
     }
 
     public void RemoveStudent() {
@@ -68,9 +113,9 @@ public class StudentService {
         sc.nextLine();
         boolean isRemoved = students.removeIf(student -> student.getId() == id);
         FileUtil.deleteStudent(id);
-        if(isRemoved){
-            System.out.println(ANSI_GREEN +"Student Deleted Successfully..." + ANSI_RESET);
-        }else{
+        if (isRemoved) {
+            System.out.println(ANSI_GREEN + "Student Deleted Successfully..." + ANSI_RESET);
+        } else {
             System.out.println(ANSI_RED + "Invalid Id..." + ANSI_RESET);
         }
 
@@ -117,7 +162,7 @@ public class StudentService {
         System.out.println(ANSI_RED + "Invalid Id..." + ANSI_RESET);
     }
 
-    public void getTotal(){
+    public void getTotal() {
         System.out.println(ANSI_BLUE + "Total Number of students = " + students.size() + ANSI_RESET);
     }
 }
