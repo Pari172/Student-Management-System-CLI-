@@ -13,12 +13,18 @@ import java.util.List;
 import main.java.model.Student;
 
 public class FileUtil implements Serializable {
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
     
     private static final String FILE_PATH = "main/resources/student.txt";
     public static void saveStudents(List<Student> students) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
             oos.writeObject(students);
-            System.out.println("Student Successfully Added...!");
+            System.out.println(ANSI_GREEN + "Student Successfully Added...!" + ANSI_RESET);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,12 +39,12 @@ public class FileUtil implements Serializable {
     if (file.exists() && file.length() > 0) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
             students = (List<Student>) ois.readObject(); // Load data from the file
-            System.out.println("Student data loaded successfully!");
+            System.out.println(ANSI_GREEN + "Student data loaded successfully!" + ANSI_RESET);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     } else {
-        System.out.println("File is empty or does not exist. Returning an empty list.");
+        System.out.println(ANSI_RED + "File is empty or does not exist. Returning an empty list." + ANSI_RESET);
     }
     return students;
 }
@@ -50,9 +56,9 @@ public class FileUtil implements Serializable {
         boolean removed = students.removeIf(student -> student.getId() == id); // Remove the student with the given ID
         if (removed) {
             saveStudents(students); // Save the updated list
-            System.out.println("Student with ID " + id + " deleted successfully!");
+            System.out.println(ANSI_BLUE + "Student with ID " + id + " deleted successfully!" + ANSI_RESET);
         } else {
-            System.out.println("Student with ID " + id + " not found.");
+            System.out.println(ANSI_RED + "Student with ID " + id + " not found." + ANSI_RESET);
         }
     }
 
@@ -72,9 +78,9 @@ public class FileUtil implements Serializable {
         }
         if (updated) {
             saveStudents(students); // Save the updated list
-            System.out.println("Student with ID " + id + " updated successfully!");
+            System.out.println(ANSI_YELLOW + "Student with ID " + id + " updated successfully!" + ANSI_RESET);
         } else {
-            System.out.println("Student with ID " + id + " not found.");
+            System.out.println(ANSI_RED +  "Student with ID " + id + " not found." + ANSI_RESET);
         }
     }
 }

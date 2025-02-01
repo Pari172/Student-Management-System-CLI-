@@ -9,6 +9,12 @@ import main.java.util.FileUtil;
 
 public class StudentService {
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+
     List<Student> students;
 
     public StudentService() {
@@ -35,10 +41,10 @@ public class StudentService {
 
     public void ViewAll() {
         if (students.isEmpty()) {
-            System.out.println("No Data Found...");
+            System.out.println(ANSI_RED + "No Data Found..." + ANSI_RESET);
         } else {
             for (Student student : students) {
-                System.out.println(student.toString());
+                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
             }
         }
     }
@@ -49,11 +55,11 @@ public class StudentService {
         sc.nextLine();
         for (Student student : students) {
             if (student.getId() == id) {
-                System.out.println(student.toString());
+                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
                 return;
             }
         }
-        System.out.println("Invalid Studnet Id !");
+        System.out.println(ANSI_RED + "Invalid Studnet Id !" + ANSI_RESET);
     }
 
     public void RemoveStudent() {
@@ -63,9 +69,9 @@ public class StudentService {
         boolean isRemoved = students.removeIf(student -> student.getId() == id);
         FileUtil.deleteStudent(id);
         if(isRemoved){
-            System.out.println("Student Deleted Successfully...");
+            System.out.println(ANSI_GREEN +"Student Deleted Successfully..." + ANSI_RESET);
         }else{
-            System.out.println("Invalid Id...");
+            System.out.println(ANSI_RED + "Invalid Id..." + ANSI_RESET);
         }
 
         // following code is giving ConcurrentModificationException
@@ -103,15 +109,15 @@ public class StudentService {
                 student.setId(uid);
                 student.setName(name);
                 student.setGrade(grade);
-                System.out.println("Student updated Successfully...!");
+                System.out.println(ANSI_YELLOW + "Student updated Successfully...!" + ANSI_RESET);
                 FileUtil.updateStudent(id, name, age, uid, grade);
                 return;
             }
         }
-        System.out.println("Invalid Id...!");
+        System.out.println(ANSI_RED + "Invalid Id..." + ANSI_RESET);
     }
 
     public void getTotal(){
-        System.out.println("Total Number of students = " + students.size());
+        System.out.println(ANSI_BLUE + "Total Number of students = " + students.size() + ANSI_RESET);
     }
 }
