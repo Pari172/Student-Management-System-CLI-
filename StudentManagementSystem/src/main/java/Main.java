@@ -1,15 +1,13 @@
 package main.java;
 
-import main.java.model.Student;
+
 import main.java.service.StudentService;
-import main.java.util.FileUtil;
-import java.util.List;
 import java.util.Scanner;
-import com.google.gson.Gson;
 public class Main {
     public static void main(String[] args) {
         StudentService studentService = new StudentService();
         Scanner scanner = new Scanner(System.in);
+        
         boolean running = true;
         // This commented code is added to check our GSON package is working file or not
         // Student s = new Student(1003, "Pankaj", 45, "D");
@@ -27,7 +25,6 @@ public class Main {
             System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
-
             switch (choice) {
                 case 1:
                     studentService.AddStudent();
@@ -50,9 +47,11 @@ public class Main {
                 case 7:
                     running=false;
                     System.out.println("Exiting...");
+                    scanner.close();
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
+                    break;
             }
         }
     }

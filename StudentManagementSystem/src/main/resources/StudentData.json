@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1001,
+    "name": "Parikshit Nandkishor Gaikwad",
+    "age": 23,
+    "grade": "A+"
+  },
+  {
+    "id": 1002,
+    "name": "Kartik Pandhurang Kale",
+    "age": 20,
+    "grade": "C"
+  },
+  {
+    "id": 1004,
+    "name": "Hitesh Choudhary",
+    "age": 38,
+    "grade": "A+"
+  },
+  {
+    "id": 1005,
+    "name": "Jethalal Champaklal Gada",
+    "age": 45,
+    "grade": "B+"
+  },
+  {
+    "id": 1006,
+    "name": "Atmaram Bhide",
+    "age": 46,
+    "grade": "A+"
+  }
+]

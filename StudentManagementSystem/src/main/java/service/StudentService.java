@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 import main.java.model.Student;
 import main.java.util.FileUtil;
+import main.java.util.FileUtilJson;
 
+import com.google.gson.*;
 public class StudentService {
 
     public static final String ANSI_RESET = "\u001B[0m";
@@ -18,7 +20,8 @@ public class StudentService {
     List<Student> students;
 
     public StudentService() {
-        students = FileUtil.loadStudents(); // Load students from the file(student.txt) when the program starts
+        // students = FileUtil.loadStudents(); // Load students from the file(student.txt) when the program starts
+        students = FileUtilJson.loadStudentsJson(); // Load students from file(StudentData.json) when program starts
     }
 
     Scanner sc = new Scanner(System.in);
@@ -37,6 +40,7 @@ public class StudentService {
         Student s = new Student(id, name, age, grade);
         students.add(s);
         FileUtil.saveStudents(students);
+        FileUtilJson.saveStudentsJson(students);
     }
 
     public void ViewAll() {
@@ -113,6 +117,7 @@ public class StudentService {
         sc.nextLine();
         boolean isRemoved = students.removeIf(student -> student.getId() == id);
         FileUtil.deleteStudent(id);
+        FileUtilJson.deleteStudentFromJsonFile(id);
         if (isRemoved) {
             System.out.println(ANSI_GREEN + "Student Deleted Successfully..." + ANSI_RESET);
         } else {
@@ -156,6 +161,7 @@ public class StudentService {
                 student.setGrade(grade);
                 System.out.println(ANSI_YELLOW + "Student updated Successfully...!" + ANSI_RESET);
                 FileUtil.updateStudent(id, name, age, uid, grade);
+                FileUtilJson.updateStudentFromJsonFile(id, name, age, uid, grade);
                 return;
             }
         }
