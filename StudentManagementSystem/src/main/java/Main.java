@@ -58,3 +58,4 @@ public class Main {
 }
 // compile -> javac -cp ".:main/lib/gson-2.12.1.jar" main/java/Main.java
 // Run     -> java -cp ".:main/lib/gson-2.12.1.jar" main/java/Main
+// git log -> after checking commit history press q to return to terminal
