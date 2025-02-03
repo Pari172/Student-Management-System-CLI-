@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,10 +36,14 @@ public class FileUtilJson {
             }
     }
     public static void saveStudentsJson(List<Student> students) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try (FileWriter writer = new FileWriter(FILE_PATH)) {
-            gson.toJson(students, writer);
-            System.out.println(Colors.ANSI_GREEN + "Student Successfully saved in json file...!" + Colors.ANSI_RESET);
+        try{
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonString = gson.toJson(students);
+            String encryptedData = CryptoUtil.Encrypt(jsonString);
+            FileWriter writer = new FileWriter(FILE_PATH);
+            writer.write(encryptedData);
+            writer.close();
+            System.out.println(Colors.ANSI_GREEN + "Data saved successfully in encrypted format." + Colors.ANSI_RESET);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,11 +57,15 @@ public class FileUtilJson {
         File file = new File(FILE_PATH);
         if (file.isFile()) {
             try (FileReader reader = new FileReader(FILE_PATH)) {
-                students = gson.fromJson(reader, listType);
-                if(students==null){
-                    students = new ArrayList<>();
-                }
-                System.out.println(Colors.ANSI_YELLOW + "Data loaded from json file..." + Colors.ANSI_RESET);
+                // students = gson.fromJson(reader, listType);
+                // if(students==null){
+                //     students = new ArrayList<>();
+                // }
+                // System.out.println(Colors.ANSI_YELLOW + "Data loaded from json file..." + Colors.ANSI_RESET);
+                String encryptedData = new String(Files.readAllBytes(Paths.get(FILE_PATH)));
+                String decryptedJsonData = CryptoUtil.Decrypt(encryptedData);
+                students =  gson.fromJson(decryptedJsonData, listType);
+                System.out.println(Colors.ANSI_YELLOW + "Data loaded from json file in decrypted format..." + Colors.ANSI_RESET);
             } catch (Exception e) {
                 e.printStackTrace();
             }

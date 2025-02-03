@@ -34,6 +34,7 @@ public class StudentService {
         System.out.println("Enter Student Grade: ");
         String grade = sc.nextLine();
         Student s = new Student(id, name, age, grade);
+
         students.add(s);
         //FileUtil.saveStudents(students);
         FileUtilJson.saveStudentsJson(students);
@@ -49,6 +50,7 @@ public class StudentService {
                 }
             });
             for (Student student : students) {
+                
                 System.out.println(Colors.ANSI_GREEN + student.toString() + Colors.ANSI_RESET);
             }
         }
@@ -58,6 +60,7 @@ public class StudentService {
     public void SearchById(int id) {
         for (Student student : students) {
             if (student.getId() == id) {
+               
                 System.out.println(Colors.ANSI_GREEN + student.toString() + Colors.ANSI_RESET);
             }
         }
@@ -67,6 +70,7 @@ public class StudentService {
     public void SearchByName(String name) {
         for (Student student : students) {
             if (student.getName().equalsIgnoreCase(name)) {
+
                 System.out.println(Colors.ANSI_GREEN + student.toString() + Colors.ANSI_RESET);
             }
         }
