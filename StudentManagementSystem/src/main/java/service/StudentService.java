@@ -1,21 +1,17 @@
 package main.java.service;
 
-import java.util.ArrayList;
+
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 import main.java.model.Student;
-import main.java.util.FileUtil;
+// import main.java.util.FileUtil;
 import main.java.util.FileUtilJson;
+import main.java.util.Colors;
 
-import com.google.gson.*;
 public class StudentService {
-
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
 
     List<Student> students;
 
@@ -39,16 +35,21 @@ public class StudentService {
         String grade = sc.nextLine();
         Student s = new Student(id, name, age, grade);
         students.add(s);
-        FileUtil.saveStudents(students);
+        //FileUtil.saveStudents(students);
         FileUtilJson.saveStudentsJson(students);
     }
 
     public void ViewAll() {
         if (students.isEmpty()) {
-            System.out.println(ANSI_RED + "No Data Found..." + ANSI_RESET);
+            System.out.println(Colors.ANSI_RED + "No Data Found..." + Colors.ANSI_RESET);
         } else {
+            Collections.sort(students,new Comparator<Student>(){
+                public int compare(Student a,Student b){
+                    return Integer.compare(a.getId(), b.getId());
+                }
+            });
             for (Student student : students) {
-                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
+                System.out.println(Colors.ANSI_GREEN + student.toString() + Colors.ANSI_RESET);
             }
         }
     }
@@ -57,7 +58,7 @@ public class StudentService {
     public void SearchById(int id) {
         for (Student student : students) {
             if (student.getId() == id) {
-                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
+                System.out.println(Colors.ANSI_GREEN + student.toString() + Colors.ANSI_RESET);
             }
         }
     }
@@ -66,7 +67,7 @@ public class StudentService {
     public void SearchByName(String name) {
         for (Student student : students) {
             if (student.getName().equalsIgnoreCase(name)) {
-                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
+                System.out.println(Colors.ANSI_GREEN + student.toString() + Colors.ANSI_RESET);
             }
         }
     }
@@ -75,7 +76,7 @@ public class StudentService {
     public void SearchByAge(int age) {
         for (Student student : students) {
             if (student.getAge() == age) {
-                System.out.println(ANSI_GREEN + student.toString() + ANSI_RESET);
+                System.out.println(Colors.ANSI_GREEN + student.toString() + Colors.ANSI_RESET);
             }
         }
     }
@@ -106,7 +107,7 @@ public class StudentService {
                 SearchByAge(age);
                 break;
             default:
-                System.out.println(ANSI_RED + "Invalid Input !" + ANSI_RESET);
+                System.out.println(Colors.ANSI_RED + "Invalid Input !" + Colors.ANSI_RESET);
                 break;
         }
     }
@@ -116,12 +117,12 @@ public class StudentService {
         int id = sc.nextInt();
         sc.nextLine();
         boolean isRemoved = students.removeIf(student -> student.getId() == id);
-        FileUtil.deleteStudent(id);
+        //FileUtil.deleteStudent(id);
         FileUtilJson.deleteStudentFromJsonFile(id);
         if (isRemoved) {
-            System.out.println(ANSI_GREEN + "Student Deleted Successfully..." + ANSI_RESET);
+            System.out.println(Colors.ANSI_GREEN + "Student Deleted Successfully..." + Colors.ANSI_RESET);
         } else {
-            System.out.println(ANSI_RED + "Invalid Id..." + ANSI_RESET);
+            System.out.println(Colors.ANSI_RED + "Invalid Id..." + Colors.ANSI_RESET);
         }
 
         // following code is giving ConcurrentModificationException
@@ -159,16 +160,16 @@ public class StudentService {
                 student.setId(uid);
                 student.setName(name);
                 student.setGrade(grade);
-                System.out.println(ANSI_YELLOW + "Student updated Successfully...!" + ANSI_RESET);
-                FileUtil.updateStudent(id, name, age, uid, grade);
+                System.out.println(Colors.ANSI_YELLOW + "Student updated Successfully...!" + Colors.ANSI_RESET);
+                // FileUtil.updateStudent(id, name, age, uid, grade);
                 FileUtilJson.updateStudentFromJsonFile(id, name, age, uid, grade);
                 return;
             }
         }
-        System.out.println(ANSI_RED + "Invalid Id..." + ANSI_RESET);
+        System.out.println(Colors.ANSI_RED + "Invalid Id..." + Colors.ANSI_RESET);
     }
 
     public void getTotal() {
-        System.out.println(ANSI_BLUE + "Total Number of students = " + students.size() + ANSI_RESET);
+        System.out.println(Colors.ANSI_BLUE + "Total Number of students = " + students.size() + Colors.ANSI_RESET);
     }
 }

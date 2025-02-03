@@ -2,6 +2,8 @@ package main.java;
 
 
 import main.java.service.StudentService;
+import main.java.util.Colors;
+import main.java.model.Student;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +17,7 @@ public class Main {
         // String j = gson.toJson(s);
         // System.out.println("Using GSON: " + j);
         while (running) {
-            System.out.println("\nStudent Management System");
+            System.out.println(Colors.ANSI_RESET + "\nStudent Management System");
             System.out.println("1. Add Student");
             System.out.println("2. View All Students");
             System.out.println("3. Search Student");
@@ -59,3 +61,37 @@ public class Main {
 // compile -> javac -cp ".:main/lib/gson-2.12.1.jar" main/java/Main.java
 // Run     -> java -cp ".:main/lib/gson-2.12.1.jar" main/java/Main
 // git log -> after checking commit history press q to return to terminal
+
+// Sample data 
+// [
+//   {
+//     "id": 1001,
+//     "name": "Parikshit Nandkishor Gaikwad",
+//     "age": 23,
+//     "grade": "A+"
+//   },
+//   {
+//     "id": 1002,
+//     "name": "Kartik Pandhurang Kale",
+//     "age": 20,
+//     "grade": "C"
+//   },
+//   {
+//     "id": 1004,
+//     "name": "Hitesh Choudhary",
+//     "age": 38,
+//     "grade": "A+"
+//   },
+//   {
+//     "id": 1005,
+//     "name": "Jethalal Champaklal Gada",
+//     "age": 45,
+//     "grade": "B+"
+//   },
+//   {
+//     "id": 1006,
+//     "name": "Atmaram Bhide",
+//     "age": 46,
+//     "grade": "A+"
+//   }
+// ]

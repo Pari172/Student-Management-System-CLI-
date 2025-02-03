@@ -7,9 +7,9 @@
   },
   {
     "id": 1002,
-    "name": "Kartik Pandhurang Kale",
-    "age": 20,
-    "grade": "C"
+    "name": "Tarak Mehata",
+    "age": 45,
+    "grade": "B"
   },
   {
     "id": 1004,
@@ -28,5 +28,11 @@
     "name": "Atmaram Bhide",
     "age": 46,
     "grade": "A+"
+  },
+  {
+    "id": 1003,
+    "name": "Asit Modi",
+    "age": 50,
+    "grade": "D"
   }
 ]
