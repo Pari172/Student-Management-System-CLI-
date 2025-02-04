@@ -1,4 +1,4 @@
-package main.java.util;
+package main.java.util.CryptoUtil;
 
 import java.util.Base64;
 

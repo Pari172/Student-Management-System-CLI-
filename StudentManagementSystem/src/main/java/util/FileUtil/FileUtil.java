@@ -1,4 +1,4 @@
-package main.java.util;
+package main.java.util.FileUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,8 +10,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.model.Student;
-import main.java.util.Colors;
+import main.java.model.StudentModel.Student;
+import main.java.util.ColorsUtil.Colors;
 public class FileUtil implements Serializable {
 
     

@@ -1,4 +1,4 @@
-package main.java.util;
+package main.java.util.FileUtilJson;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,8 +11,10 @@ import java.util.List;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import main.java.model.Student;
-import main.java.util.Colors;
+
+import main.java.model.StudentModel.Student;
+import main.java.util.ColorsUtil.Colors;
+import main.java.util.CryptoUtil.CryptoUtil;
 
 public class FileUtilJson {
     private static final String FILE_PATH = "main/resources/StudentData.json";

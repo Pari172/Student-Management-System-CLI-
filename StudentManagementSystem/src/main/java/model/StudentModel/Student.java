@@ -1,4 +1,4 @@
-package main.java.model;
+package main.java.model.StudentModel;
 
 import java.io.Serializable;
 

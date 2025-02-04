@@ -1,8 +1,8 @@
 package main.java;
 
-import main.java.service.StudentService;
-import main.java.util.Colors;
-import main.java.model.Student;
+import main.java.util.ColorsUtil.Colors;
+import main.java.model.StudentModel.Student;
+import main.java.service.StudentService.StudentService;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -36,7 +36,6 @@ public class Main {
                         break;
                     case 2:
                         studentService.ViewAll();
-                        ;
                         break;
                     case 3:
                         studentService.SearchStudent();
@@ -66,9 +65,17 @@ public class Main {
         }
     }
 }
+
+// old commands, before folder structure
 // compile -> javac -cp ".:main/lib/gson-2.12.1.jar" main/java/Main.java
 // Run -> java -cp ".:main/lib/gson-2.12.1.jar" main/java/Main
 // git log -> after checking commit history press q to return to terminal
+
+// new command after folder structure
+// if bin not present in src then run mkdir bin when you are in src
+// compile -> javac -cp ".:main/lib/gson-2.12.1.jar" -d bin main/java/Main.java
+// Run -> java -cp "bin:main/lib/gson-2.12.1.jar" main/java/Main
+
 
 // Sample data
 // [

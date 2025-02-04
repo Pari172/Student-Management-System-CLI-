@@ -1,4 +1,4 @@
-package main.java.service;
+package main.java.service.StudentService;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -6,10 +6,9 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import main.java.model.Student;
-// import main.java.util.FileUtil;
-import main.java.util.FileUtilJson;
-import main.java.util.Colors;
+import main.java.model.StudentModel.Student;
+import main.java.util.ColorsUtil.Colors;
+import main.java.util.FileUtilJson.FileUtilJson;
 
 public class StudentService {
 
