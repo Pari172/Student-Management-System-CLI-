@@ -19,7 +19,7 @@ public class Main {
         // String j = gson.toJson(s);
         // System.out.println("Using GSON: " + j);
         while (running) {
-            System.out.println(Colors.ANSI_RESET + "\nStudent Management System");
+            System.out.println(Colors.ANSI_RESET + "\n************ Student Management System ************");
             System.out.println("1. Add Student");
             System.out.println("2. View All Students");
             System.out.println("3. Search Student");
