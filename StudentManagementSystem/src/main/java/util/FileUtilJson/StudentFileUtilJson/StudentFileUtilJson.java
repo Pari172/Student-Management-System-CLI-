@@ -1,4 +1,4 @@
-package main.java.util.FileUtilJson;
+package main.java.util.FileUtilJson.StudentFileUtilJson;
 
 import java.io.File;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ import main.java.model.StudentModel.Student;
 import main.java.util.ColorsUtil.Colors;
 import main.java.util.CryptoUtil.CryptoUtil;
 
-public class FileUtilJson {
+public class StudentFileUtilJson {
     private static final String FILE_PATH = "main/resources/StudentData.json";
     
     private static final void CreateNewJsonFile(){
@@ -45,7 +45,7 @@ public class FileUtilJson {
             FileWriter writer = new FileWriter(FILE_PATH);
             writer.write(encryptedData);
             writer.close();
-            System.out.println(Colors.ANSI_GREEN + "Data saved successfully in encrypted format." + Colors.ANSI_RESET);
+            System.out.println(Colors.ANSI_GREEN + "Student data saved successfully in encrypted format." + Colors.ANSI_RESET);
         } catch (Exception e) {
             e.printStackTrace();
         }

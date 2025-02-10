@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import main.java.model.StudentModel.Student;
 import main.java.util.ColorsUtil.Colors;
-import main.java.util.FileUtilJson.FileUtilJson;
+import main.java.util.FileUtilJson.StudentFileUtilJson.StudentFileUtilJson;
 
 public class StudentService {
 
@@ -17,7 +17,7 @@ public class StudentService {
     public StudentService() {
         // students = FileUtil.loadStudents(); // Load students from the
         // file(student.txt) when the program starts
-        students = FileUtilJson.loadStudentsJson(); // Load students from file(StudentData.json) when program starts
+        students = StudentFileUtilJson.loadStudentsJson(); // Load students from file(StudentData.json) when program starts
     }
 
     Scanner sc = new Scanner(System.in);
@@ -37,7 +37,7 @@ public class StudentService {
 
         students.add(s);
         // FileUtil.saveStudents(students);
-        FileUtilJson.saveStudentsJson(students);
+        StudentFileUtilJson.saveStudentsJson(students);
     }
 
     public void ViewAll() {
@@ -127,7 +127,7 @@ public class StudentService {
         sc.nextLine();
         boolean isRemoved = students.removeIf(student -> student.getId() == id);
         // FileUtil.deleteStudent(id);
-        FileUtilJson.deleteStudentFromJsonFile(id);
+        StudentFileUtilJson.deleteStudentFromJsonFile(id);
         if (isRemoved) {
             System.out.println(Colors.ANSI_GREEN + "Student Deleted Successfully..." + Colors.ANSI_RESET);
         } else {
@@ -171,7 +171,7 @@ public class StudentService {
                 student.setGrade(grade);
                 System.out.println(Colors.ANSI_YELLOW + "Student updated Successfully...!" + Colors.ANSI_RESET);
                 // FileUtil.updateStudent(id, name, age, uid, grade);
-                FileUtilJson.updateStudentFromJsonFile(id, name, age, uid, grade);
+                StudentFileUtilJson.updateStudentFromJsonFile(id, name, age, uid, grade);
                 return;
             }
         }
