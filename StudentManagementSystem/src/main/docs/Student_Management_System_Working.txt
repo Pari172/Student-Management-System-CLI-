@@ -1,0 +1,99 @@
+********* Wellcome To Student Management System ************
+
+1. Admin
+2.Student
+3. Exit
+
+---------------------Admin Part---------------
+Pressed 1: 
+1. SignUp As  Admin
+2. LogIn As Admin
+3. Go Back
+
+//if
+Pressed 1:
+Enter admin name: Prof. Rajesh Shukla
+Enter phone no: +91-99999 99999                   // check carefully! if not then move 1
+Enter mail id: rajeshshikla12@gmail.com       // check carefully! if not then move 1
+Enter admin type: Principle                                    // check carefully! if not then move 1
+Enter verification Id: xxxxxxx // this is verified internally if matched then  admin  succefully added otherwise fails
+
+ ***** Admin successfully added *****
+
+username: rajeshshikla12@gmail.com
+password:  12345                                               // these details shown only one time when Admin SignUp for first time
+
+1. Admin Dashboard
+2. Add Student
+3. View All Students
+4. Search Student
+5. Update Student
+6. Get Total Students Count
+7. LogOut
+
+
+//if 
+Pressed 2:
+Enter Admin username: rajeshshikla12@gmail.com
+Enter  Password: 12345
+
+***** Admin LogIn Successfully *****
+
+1. Admin Dashboard
+2. Add Student // age must be 18-30 ,,, let phone number and email empty(null) it will be updated by student
+3. View All Students
+4. Search Student // we can use binary search algo here 
+5. Update Student // we can use binary search algo here  to search then update
+6. Get Total Students Count
+7. LogOut
+
+
+//if 
+Pressed 3:
+1. Admin
+2. Student
+3. Exit
+
+
+
+
+------------------Student------------------
+
+Pressed 2: 
+// student will not sign up here because 
+1. LogIn As Student
+2. Go Back
+
+
+//if
+Pressed 1:
+Enter Student Username: Raju Pandit  // these details will be generated when admin added this student, student must have to save these credentials to log in
+Enter password: 78945 
+
+*****Student Successfully Loged In *****
+1. Student Dashboard
+2. Update Phone Number // updation possible only two time both phone no and email
+3. Update EmailId
+3. LogOut
+
+// Do this project after learning maven
+
+
+
+
+
+Admin Class        
+-name
+-number
+-mailid
+-type
+-username //private
+-password //private
+
+Student Class
+-name
+-roll no // auto generate when admin add student
+-grade 
+-phone number 
+-email id
+-DOB
